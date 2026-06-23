@@ -1,6 +1,10 @@
 # Competitive Intelligence Pipeline
 
-AI-powered competitive analysis in 90 seconds. Automates competitive research that typically takes analysts 4-6 hours.
+Gathering competitive intelligence manually is time-consuming and inconsistent — analysts typically spend 4-6 hours per company pulling data from disparate sources, synthesizing it, and producing a structured report. This pipeline automates that process end-to-end: submit a company name, get a structured competitive analysis report in 60-90 seconds.
+
+The system uses LangGraph to orchestrate three agents in sequence. The Researcher agent queries Tavily for real-time web data and stores results in ChromaDB for vector memory. The Analyst agent scores competitors across pricing, features, and market position using NVIDIA NIM (Llama 3.1 70B). The Writer agent produces a structured executive brief with a competitor matrix and 30-day recommendations. All agents communicate through a shared MCP Server that exposes tools for search, memory reads/writes, and LLM calls.
+
+All LLM outputs are validated with Pydantic before being written to state. Input validation rejects generic or invalid company names before the pipeline runs. The API exposes two endpoints: `/analyze` for single-company analysis and `/compare` for head-to-head comparison. Structured JSON logs with request tracing are written throughout. Deploys with Docker + docker-compose; pytest test suite included.
 
 ## Architecture
 
