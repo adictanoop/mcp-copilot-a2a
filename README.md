@@ -1,4 +1,5 @@
 # Competitive Intelligence Pipeline
+<!-- updated -->
 
 Gathering competitive intelligence manually is time-consuming and inconsistent — analysts typically spend 4-6 hours per company pulling data from disparate sources, synthesizing it, and producing a structured report. This pipeline automates that process end-to-end: submit a company name, get a structured competitive analysis report in 60-90 seconds.
 
